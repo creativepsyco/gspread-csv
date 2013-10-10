@@ -30,6 +30,8 @@ for doc in docs:
         #filename = doc + '.csv'
         with open(filename, 'wb') as f:
             writer = csv.writer(f)
-            writer.writerows(worksheet.get_all_values())
+            list_of_values = worksheet.get_all_values()
+            for row in list_of_values:
+                writer.writerow([unicode(s).encode("utf-8") for s in row])
     print '== Finished Writing: ' + filename + ' =='
 print '====== FINISHED ======'
